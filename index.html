@@ -787,10 +787,17 @@
       transition: all 0.3s;
       flex: 1;
       min-width: 280px;
+      cursor: pointer;
+      animation: cert-pulse 3s ease-in-out infinite;
     }
     .cert-badge:hover {
       border-color: var(--accent);
       background: var(--accent-dim);
+      animation: none;
+    }
+    @keyframes cert-pulse {
+      0%, 100% { border-color: var(--border); }
+      50% { border-color: var(--accent-dim); }
     }
     .cert-badge .cert-num {
       font-family: var(--font-mono);
@@ -1357,15 +1364,15 @@
       <span class="section-num">05</span>
     </div>
     <div class="certs-grid reveal reveal-delay-1">
-      <div class="cert-badge">
+      <div class="cert-badge" data-cert="iso9001" onclick="openCertLightbox(this.dataset.cert)">
         <span class="cert-num">ISO 9001</span>
         <span class="cert-name" data-i18n="certs.iso9001">Quality Management System</span>
       </div>
-      <div class="cert-badge">
+      <div class="cert-badge" data-cert="iso14001" onclick="openCertLightbox(this.dataset.cert)">
         <span class="cert-num">ISO 14001</span>
         <span class="cert-name" data-i18n="certs.iso14001">Environmental Management System</span>
       </div>
-      <div class="cert-badge">
+      <div class="cert-badge" data-cert="iso45001" onclick="openCertLightbox(this.dataset.cert)">
         <span class="cert-num">ISO 45001</span>
         <span class="cert-name" data-i18n="certs.iso45001">Occupational Health & Safety</span>
       </div>
@@ -1942,6 +1949,10 @@
       document.getElementById('lightbox-img').src = src;
       document.getElementById('lightbox').classList.add('active');
       document.body.style.overflow = 'hidden';
+    }
+    function openCertLightbox(cert) {
+      const lang = currentLang === 'cn' ? 'cn' : 'en';
+      openLightbox('assets/cert-' + cert + '-' + lang + '.webp');
     }
     function closeLightbox(e) {
       if (e && e.target !== e.currentTarget) return;
