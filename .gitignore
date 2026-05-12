@@ -3,4 +3,5 @@ dogfood-output/
 screenshot-*.jpg
 screenshot-*.png
 *.png
+*.bak.*
 .vercel
