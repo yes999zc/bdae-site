@@ -1212,7 +1212,7 @@
         pointer-events: auto;
       }
       .mobile-menu-btn { display: flex; }
-      nav { padding: var(--space-xs) var(--space-sm); }
+      nav { padding: var(--space-xs) var(--space-sm); overflow: hidden; }
       .nav-right { display: none; }
       section { padding: var(--space-xl) var(--space-md); }
       .section-header { margin-bottom: var(--space-lg); }
@@ -2187,6 +2187,19 @@
         document.body.style.overflow = '';
       }
     }
+
+    // Force-clean nav on mobile — inline style bypasses CSS specificity issues
+    function enforceMobileNav() {
+      const isMobile = window.innerWidth <= 900;
+      document.querySelector('.nav-links').style.display = isMobile ? 'none' : '';
+      document.querySelector('.nav-right').style.display = isMobile ? 'none' : '';
+    }
+    enforceMobileNav();
+    window.addEventListener('resize', enforceMobileNav);
+    // Also run on orientation change (critical for phones)
+    window.addEventListener('orientationchange', function() {
+      setTimeout(enforceMobileNav, 100);
+    });
 
     // ===== LEAFLET MAP =====
     document.addEventListener('DOMContentLoaded', function() {
