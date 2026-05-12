@@ -1576,7 +1576,7 @@
         <img src="assets/logo-bd.webp" alt="BDAE">
         <span>BDAE <span style="color:var(--text-secondary);font-weight:400;">Consulting</span></span>
       </div>
-      <p class="footer-desc" data-i18n="footer.desc">BDAE Consulting delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.</p>
+      <p class="footer-desc" data-i18n="footer.desc">BDAE Consulting delivers practical, high-quality consulting solutions<br>in due diligence, EPCM services, and carbon neutral initiatives.</p>
       <div class="footer-social-row">
         <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
         <a href="#" target="_blank" rel="noopener" data-i18n="footer.wechat">WeChat</a>
@@ -1693,8 +1693,8 @@
         'contact.phoneLabel': 'Telephone',
         'contact.emailLabel': 'Email',
         'contact.emailLink': 'Email',
-        'footer.rights': 'All rights reserved',
-        'footer.desc': 'BDAE Consulting delivers practical, high-quality consulting solutions\\nin due diligence, EPCM services, and carbon neutral initiatives.',
+'footer.rights': 'All rights reserved',
+        'footer.desc': 'BDAE Consulting delivers practical, high-quality consulting solutions<br>in due diligence, EPCM services, and carbon neutral initiatives.',
         'footer.navTitle': 'Quick Links',
         'footer.contactTitle': 'Contact',
         'footer.address': 'Tower 7-506, Lotus International Plaza, Shanghai',
@@ -1812,7 +1812,7 @@
         'contact.emailLabel': '邮箱',
         'contact.emailLink': '发送邮件',
         'footer.rights': '版权所有',
-        'footer.desc': '倍蒂咨询专注于尽职调查、EPCM服务与碳中和咨询，\\n为客户提供可靠、可落地的工程咨询解决方案。',
+'footer.desc': '倍蒂咨询专注于尽职调查、EPCM服务与碳中和咨询，<br>为客户提供可靠、可落地的工程咨询解决方案。',
         'footer.navTitle': '快捷导航',
         'footer.contactTitle': '联系我们',
         'footer.address': '上海 · 沈阳 · 新加坡',
@@ -1864,8 +1864,8 @@
           }
         } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
           // skip
-        } else if (el.querySelector('br') || translation.includes('\n')) {
-          el.innerHTML = translation.replace(/\n/g, '<br>');
+        } else if (el.querySelector('br') || translation.includes('\n') || translation.includes('<br>')) {
+          el.innerHTML = translation.includes('<br>') ? translation : translation.replace(/\n/g, '<br>');
         } else {
           el.textContent = translation;
         }
