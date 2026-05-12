@@ -941,7 +941,7 @@
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      grid-template-columns: 1.5fr 1fr 1fr;
       gap: var(--space-xl);
     }
     .footer-col h4 {
@@ -1139,8 +1139,8 @@
       <li><a href="#about" data-i18n="nav.about">About</a></li>
       <li><a href="#services" data-i18n="nav.services">Services</a></li>
       <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
-      <li><a href="#certifications" data-i18n="nav.certs">Certifications</a></li>
       <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#certifications" data-i18n="nav.certs">Certifications</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
     <div class="nav-right">
@@ -1330,42 +1330,11 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="section-header reveal">
-      <h2 class="section-title"><span data-i18n="projects.title">Featured </span><span class="accent" data-i18n="projects.accent">Projects</span></h2>
-      <span class="section-num">04</span>
-    </div>
-    <div class="project-showcase reveal reveal-delay-1" id="project-carousel">
-      <div class="project-visual" id="project-visual">
-        <img id="project-img" src="assets/project-bmw-hvb.jpg" alt="">
-        <div class="project-tag" id="project-tag">Project Management</div>
-      </div>
-      <div class="project-details">
-        <div>
-          <div class="project-meta-row"><span class="meta-key" data-i18n="projects.client">Client</span><span class="meta-val" id="project-client">BMW Brilliance</span></div>
-          <div class="project-meta-row"><span class="meta-key" data-i18n="projects.location">Location</span><span class="meta-val" id="project-location">Shenyang</span></div>
-          <div class="project-meta-row"><span class="meta-key" data-i18n="projects.investment">Investment</span><span class="meta-val" id="project-investment">10 Bil. RMB</span></div>
-          <div class="project-meta-row"><span class="meta-key" data-i18n="projects.type">Type</span><span class="meta-val" id="project-type">Automotive</span></div>
-          <div class="project-meta-row"><span class="meta-key" data-i18n="projects.service">Service</span><span class="meta-val" id="project-service">PCM / EHS</span></div>
-        </div>
-        <h3 class="project-title" id="project-title">BMW Brilliance HVB Capacity Step Project</h3>
-        <p class="secondary" id="project-desc">Full EPCM services for BMW's strategic expansion of high-voltage battery production capacity at their Shenyang manufacturing complex.</p>
-        <div class="project-nav">
-          <button id="project-prev" title="Previous project">&#8592;</button>
-          <span class="project-counter" id="project-counter">01 / 12</span>
-          <button id="project-next" title="Next project">&#8594;</button>
-        </div>
-        <div class="project-indicators" id="project-indicators"></div>
-      </div>
-    </div>
-  </section>
-
   <!-- CERTIFICATIONS -->
   <section id="certifications">
     <div class="section-header reveal">
         <h2 class="section-title"><span data-i18n="certs.title">Certi</span><span class="accent" data-i18n="certs.accent">fied</span></h2>
-      <span class="section-num">05</span>
+      <span class="section-num">04</span>
     </div>
     <div class="certs-grid reveal reveal-delay-1">
       <div class="cert-badge" data-cert="iso9001" onclick="openCertLightbox(this.dataset.cert)">
@@ -1399,6 +1368,36 @@
         <span class="cert-num" data-i18n="certs.award">Client Letter</span>
         <span class="cert-name" data-i18n="certs.awardLabel">Appreciation</span>
         <span class="pulse-dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-header reveal">
+      <h2 class="section-title"><span data-i18n="projects.title">Featured </span><span class="accent" data-i18n="projects.accent">Projects</span></h2>
+      <span class="section-num">05</span>
+    </div>
+    <div class="project-showcase reveal reveal-delay-1" id="project-carousel">
+      <div class="project-visual" id="project-visual">
+        <img id="project-img" src="assets/project-bmw-hvb.jpg" alt="">
+        <div class="project-tag" id="project-tag">Project Management</div>
+      </div>
+      <div class="project-details">
+        <div>
+          <div class="project-meta-row"><span class="meta-key" data-i18n="projects.client">Client</span><span class="meta-val" id="project-client">BMW Brilliance</span></div>
+          <div class="project-meta-row"><span class="meta-key" data-i18n="projects.location">Location</span><span class="meta-val" id="project-location">Shenyang</span></div>
+          <div class="project-meta-row"><span class="meta-key" data-i18n="projects.investment">Investment</span><span class="meta-val" id="project-investment">10 Bil. RMB</span></div>
+          <div class="project-meta-row"><span class="meta-key" data-i18n="projects.type">Type</span><span class="meta-val" id="project-type">Automotive</span></div>
+          <div class="project-meta-row"><span class="meta-key" data-i18n="projects.service">Service</span><span class="meta-val" id="project-service">PCM / EHS</span></div>
+        </div>
+        <h3 class="project-title" id="project-title">BMW Brilliance HVB Capacity Step Project</h3>
+        <p class="secondary" id="project-desc">Full EPCM services for BMW's strategic expansion of high-voltage battery production capacity at their Shenyang manufacturing complex.</p>
+        <div class="project-nav">
+          <button id="project-prev" title="Previous project">&#8592;</button>
+          <span class="project-counter" id="project-counter">01 / 12</span>
+          <button id="project-next" title="Next project">&#8594;</button>
+        </div>
+        <div class="project-indicators" id="project-indicators"></div>
       </div>
     </div>
   </section>
@@ -1464,6 +1463,11 @@
           <span>BDAE <span style="color:var(--text-secondary);font-weight:400;">Consulting</span></span>
         </div>
         <p class="footer-desc" data-i18n="footer.desc">BDAE Consulting delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.</p>
+        <div class="footer-social">
+          <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
+          <a href="#" target="_blank" rel="noopener" data-i18n="footer.wechat">WeChat</a>
+          <a href="#" target="_blank" rel="noopener" data-i18n="footer.youtube">YouTube</a>
+        </div>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer.navTitle">Quick Links</h4>
@@ -1471,21 +1475,10 @@
           <li><a href="#about" data-i18n="nav.about">About</a></li>
           <li><a href="#services" data-i18n="nav.services">Services</a></li>
           <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
-          <li><a href="#certifications" data-i18n="nav.certs">Certifications</a></li>
           <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#certifications" data-i18n="nav.certs">Certifications</a></li>
           <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer.contactTitle">Contact</h4>
-        <div class="footer-contact-item"><a href="tel:02134172901">021-3417-2901</a></div>
-        <div class="footer-contact-item"><a href="mailto:z.pan@bd-ae.com">z.pan@bd-ae.com</a></div>
-        <div class="footer-contact-item" data-i18n="footer.address">Shanghai · Shenyang · Singapore</div>
-        <div class="footer-social">
-          <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
-          <a href="#" target="_blank" rel="noopener" data-i18n="footer.wechat">WeChat</a>
-          <a href="#" target="_blank" rel="noopener" data-i18n="footer.youtube">YouTube</a>
-        </div>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer.platformTitle">Platforms</h4>
