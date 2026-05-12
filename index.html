@@ -872,16 +872,24 @@
       margin-bottom: var(--space-md);
       text-transform: uppercase;
     }
+    .contact-info:first-child {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-info:first-child .contact-brand-left {
+      margin-top: auto;
+    }
     .contact-block {
-      margin-bottom: var(--space-lg);
+      margin-bottom: var(--space-md);
     }
     .contact-block .label {
-      margin-bottom: var(--space-xs);
+      margin-bottom: 0.2rem;
       display: block;
     }
     .contact-block .value {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--text);
+      line-height: 1.4;
     }
     .contact-block .value a {
       color: var(--text);
@@ -912,16 +920,12 @@
     .contact-sayhello {
       margin-top: var(--space-md);
     }
-    .contact-brand-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-top: var(--space-lg);
-      padding-top: var(--space-lg);
-      border-top: 1px solid var(--border);
-    }
     .contact-brand-left {
       flex: 1;
+      margin-top: var(--space-md);
+    }
+    .contact-brand-left .footer-desc {
+      max-width: 100%;
     }
     .contact-social-row {
       display: flex;
@@ -962,7 +966,8 @@
     }
     .contact-map {
       width: 100%;
-      height: 280px;
+      height: auto;
+      aspect-ratio: 4 / 3;
       border: none;
       display: block;
       border-radius: 4px;
@@ -1182,7 +1187,7 @@
       section { padding: var(--space-lg) var(--space-md); }
       .section-header { margin-bottom: var(--space-md); }
       .simple-footer { flex-direction: column; gap: var(--space-xs); text-align: center; }
-      .contact-brand-row { flex-direction: column; gap: var(--space-md); }
+      .contact-info:first-child { display: block; }
     }
   </style>
 </head>
@@ -1500,6 +1505,14 @@
           <span class="label" data-i18n="contact.emailLabel">Email</span>
           <div class="value"><a href="mailto:z.pan@bd-ae.com">z.pan@bd-ae.com</a></div>
         </div>
+        <div class="contact-brand-left">
+          <p class="footer-desc" data-i18n="footer.desc">BDAE Consulting delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.</p>
+          <div class="contact-social-row">
+            <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
+            <a href="#" target="_blank" rel="noopener" data-i18n="footer.wechat">WeChat</a>
+            <a href="#" target="_blank" rel="noopener" data-i18n="footer.youtube">YouTube</a>
+          </div>
+        </div>
       </div>
       <div class="contact-info">
         <h3 class="contact-sayhello" data-i18n="contact.sayHello">Say Hello</h3>
@@ -1507,20 +1520,6 @@
         <a href="mailto:z.pan@bd-ae.com" class="contact-cta" data-i18n="contact.ctaBtn">Send an Email</a>
         <div class="contact-map-wrap">
           <div id="contact-map" class="contact-map"></div>
-        </div>
-        <div class="contact-brand-row">
-          <div class="contact-brand-left">
-            <div class="footer-brand">
-              <img src="assets/logo-bd.webp" alt="BDAE">
-              <span>BDAE <span style="color:var(--text-secondary);font-weight:400;">Consulting</span></span>
-            </div>
-            <p class="footer-desc" data-i18n="footer.desc">BDAE Consulting delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.</p>
-          </div>
-          <div class="contact-social-row">
-            <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
-            <a href="#" target="_blank" rel="noopener" data-i18n="footer.wechat">WeChat</a>
-            <a href="#" target="_blank" rel="noopener" data-i18n="footer.youtube">YouTube</a>
-          </div>
         </div>
       </div>
     </div>
