@@ -151,10 +151,14 @@
       gap: var(--space-sm);
       text-decoration: none;
     }
-    .nav-logo img {
+    [data-theme="dark"] .nav-logo img {
       height: 36px;
       width: auto;
       filter: brightness(0) invert(1);
+    }
+    .nav-logo img {
+      height: 36px;
+      width: auto;
     }
     .nav-links {
       display: flex;
@@ -1082,10 +1086,10 @@
       z-index: 2;
     }
     /* Leaflet dark overrides */
-    .leaflet-container { background: var(--bg) !important; }
-    .leaflet-control-zoom a { background: var(--bg-elevated) !important; color: var(--text-secondary) !important; border-color: var(--border) !important; }
-    .leaflet-control-attribution { background: rgba(26,26,26,0.8) !important; color: var(--text-dim) !important; }
-    .leaflet-control-attribution a { color: var(--accent) !important; }
+    [data-theme="dark"] .leaflet-container { background: var(--bg) !important; }
+    [data-theme="dark"] .leaflet-control-zoom a { background: var(--bg-elevated) !important; color: var(--text-secondary) !important; border-color: var(--border) !important; }
+    [data-theme="dark"] .leaflet-control-attribution { background: rgba(26,26,26,0.8) !important; color: var(--text-dim) !important; }
+    [data-theme="dark"] .leaflet-control-attribution a { color: var(--accent) !important; }
 
     /* ===== FOOTER (base, overridden by .simple-footer) ===== */
     .footer-brand {
@@ -1094,10 +1098,14 @@
       gap: var(--space-sm);
       margin-bottom: var(--space-sm);
     }
-    .footer-brand img {
+    [data-theme="dark"] .footer-brand img {
       height: 32px;
       width: auto;
       filter: brightness(0) invert(1);
+    }
+    .footer-brand img {
+      height: 32px;
+      width: auto;
     }
     .footer-brand span {
       font-family: var(--font-display);
