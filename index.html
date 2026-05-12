@@ -529,7 +529,6 @@
     }
     .service-card:hover .service-title {
       color: var(--accent);
-      transition: color 0.3s;
     }
     .service-num {
       font-family: var(--font-mono);
@@ -545,6 +544,7 @@
       margin-bottom: var(--space-md);
       text-transform: uppercase;
       letter-spacing: 0.02em;
+      transition: color 0.3s;
     }
     .service-desc {
       color: var(--text-secondary);
@@ -1074,29 +1074,12 @@
       z-index: 2;
     }
     /* Leaflet dark overrides */
-    .leaflet-container { background: #1a1a1a !important; }
-    .leaflet-control-zoom a { background: #252525 !important; color: #b8b8b8 !important; border-color: #333 !important; }
-    .leaflet-control-attribution { background: rgba(26,26,26,0.8) !important; color: #777 !important; }
-    .leaflet-control-attribution a { color: #00ff88 !important; }
+    .leaflet-container { background: var(--bg) !important; }
+    .leaflet-control-zoom a { background: var(--bg-elevated) !important; color: var(--text-secondary) !important; border-color: var(--border) !important; }
+    .leaflet-control-attribution { background: rgba(26,26,26,0.8) !important; color: var(--text-dim) !important; }
+    .leaflet-control-attribution a { color: var(--accent) !important; }
 
-    /* ===== FOOTER ===== */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: var(--space-xxl) var(--space-md) var(--space-lg);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: var(--space-xl);
-    }
-    .footer-col h4 {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text-dim);
-      margin-bottom: var(--space-md);
-    }
+    /* ===== FOOTER (base, overridden by .simple-footer) ===== */
     .footer-brand {
       display: flex;
       align-items: center;
@@ -1121,79 +1104,6 @@
       line-height: 1.6;
       max-width: 320px;
     }
-    .footer-links {
-      list-style: none;
-    }
-    .footer-links li {
-      margin-bottom: var(--space-sm);
-    }
-    .footer-links a {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-    .footer-contact-item {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-bottom: var(--space-sm);
-      line-height: 1.5;
-    }
-    .footer-contact-item a {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-contact-item a:hover {
-      color: var(--accent);
-    }
-    .footer-social {
-      display: flex;
-      gap: var(--space-sm);
-      margin-top: var(--space-md);
-      flex-wrap: wrap;
-    }
-    .footer-social a {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
-      text-decoration: none;
-      padding: 0.35rem 0.7rem;
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-    }
-    .footer-social a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-    .footer-bottom {
-      border-top: 1px solid var(--border);
-      margin-top: var(--space-xl);
-      padding-top: var(--space-md);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--text-dim);
-    }
-    .footer-bottom a {
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-bottom a:hover {
-      color: var(--accent);
-    }
-
     /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .hero {
@@ -1376,15 +1286,15 @@
       </div>
       <div class="about-values reveal reveal-delay-1">
         <div class="value-item">
-          <h4 data-i18n="about.visionTitle">Vision</h4>
+          <h3 data-i18n="about.visionTitle">Vision</h3>
           <p data-i18n="about.visionText">Improve the world a little by improving ourselves.</p>
         </div>
         <div class="value-item">
-          <h4 data-i18n="about.missionTitle">Mission</h4>
+          <h3 data-i18n="about.missionTitle">Mission</h3>
           <p data-i18n="about.missionText">Satisfied clients, Blessed employees.</p>
         </div>
         <div class="value-item">
-          <h4 data-i18n="about.valuesTitle">Values</h4>
+          <h3 data-i18n="about.valuesTitle">Values</h3>
           <p data-i18n="about.valuesText">Unite client vision with our knowhow to deliver values.</p>
         </div>
       </div>
@@ -1612,7 +1522,7 @@
       <div class="footer-brand">
         <img src="assets/logo-bd.webp" alt="BDAE">
         <div class="footer-social-row">
-          <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
+          <a href="https://cn.linkedin.com/company/bdaeconsulting" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
           <a href="#" target="_blank" rel="noopener" data-i18n="footer.wechat">WeChat</a>
           <a href="#" target="_blank" rel="noopener" data-i18n="footer.youtube">YouTube</a>
         </div>
