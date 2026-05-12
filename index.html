@@ -264,16 +264,8 @@
       background: var(--text);
       transition: all 0.3s;
     }
-    .nav-mobile-only {
+    #mobile-sidebar {
       display: none;
-    }
-    .nav-mobile-controls {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-      padding-top: var(--space-lg);
-      border-top: 1px solid var(--border);
-      margin-top: var(--space-md);
     }
 
     /* ===== HERO ===== */
@@ -1147,28 +1139,64 @@
       .project-details { border-left: none; border-top: 1px solid var(--border); }
       .contact-layout { grid-template-columns: 1fr; }
       .contact-map, .contact-map-wrap { width: 100%; height: 250px; }
-      .nav-links {
+      .nav-links { display: none; }
+      #mobile-sidebar {
+        display: flex;
+        flex-direction: column;
         position: fixed;
         top: 0; right: 0; bottom: 0;
         width: 280px;
-        flex-direction: column;
-        gap: 0;
         background: var(--bg);
         border-left: 1px solid var(--border);
         padding: var(--space-xxl) var(--space-lg) var(--space-lg);
-        display: flex;
         transform: translateX(100%);
         transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         z-index: 200;
+        overflow-y: auto;
       }
-      .nav-links.open {
+      #mobile-sidebar.open {
         transform: translateX(0);
       }
-      .nav-links li {
-        margin-bottom: var(--space-sm);
+      .ms-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
       }
-      .nav-links li:last-child {
-        margin-bottom: 0;
+      .ms-links a {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .ms-links a:hover {
+        color: var(--text);
+      }
+      .ms-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+        padding-top: var(--space-lg);
+        margin-top: var(--space-md);
+        border-top: 1px solid var(--border);
+      }
+      .ms-controls .nav-ext-link {
+        display: inline-flex;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--text-secondary);
+        padding: 0.4rem 0.6rem;
+        border: 1px solid var(--border);
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .ms-controls .nav-ext-link:hover {
+        color: var(--accent);
+        border-color: var(--accent);
       }
       .mobile-nav-overlay {
         position: fixed;
@@ -1186,19 +1214,6 @@
       .mobile-menu-btn { display: flex; }
       nav { padding: var(--space-xs) var(--space-sm); }
       .nav-right { display: none; }
-      .nav-mobile-only { display: block; }
-      .nav-mobile-controls {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: var(--space-sm);
-        padding-top: var(--space-md);
-        margin-top: var(--space-sm);
-      }
-      .nav-mobile-controls .nav-ext-link {
-        display: inline-flex;
-        font-size: 0.65rem;
-        padding: 0.4rem 0.6rem;
-      }
       section { padding: var(--space-xl) var(--space-md); }
       .section-header { margin-bottom: var(--space-lg); }
       .service-card { padding: var(--space-lg) var(--space-md); }
@@ -1254,21 +1269,6 @@
       <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
       <li><a href="#certifications" data-i18n="nav.certs">Certifications</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-      <!-- mobile-only controls in sidebar -->
-      <li class="nav-mobile-only">
-        <div class="nav-mobile-controls">
-          <a href="https://v.bd-ae.com" target="_blank" rel="noopener" class="nav-ext-link" data-i18n="nav.vr">VR平台</a>
-          <a href="https://mail.bd-ae.com" target="_blank" rel="noopener" class="nav-ext-link" data-i18n="nav.mail">邮件</a>
-          <div class="lang-switch">
-            <button class="active" data-lang="en">EN</button>
-            <button data-lang="cn">中</button>
-          </div>
-          <div class="color-switch">
-            <button class="active" data-color="neon" style="--c:#00ff88" aria-label="Neon green"></button>
-            <button data-color="logo" style="--c:#177a4c" aria-label="Logo green"></button>
-          </div>
-        </div>
-      </li>
     </ul>
     <div class="nav-right">
       <a href="https://v.bd-ae.com" target="_blank" rel="noopener" class="nav-ext-link" data-i18n="nav.vr">VR平台</a>
@@ -1286,6 +1286,29 @@
       <span></span><span></span><span></span>
     </button>
   </nav>
+  <!-- Mobile sidebar — completely outside nav to avoid flex overflow -->
+  <div id="mobile-sidebar">
+    <ul class="ms-links">
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#certifications" data-i18n="nav.certs">Certifications</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="ms-controls">
+      <a href="https://v.bd-ae.com" target="_blank" rel="noopener" class="nav-ext-link" data-i18n="nav.vr">VR平台</a>
+      <a href="https://mail.bd-ae.com" target="_blank" rel="noopener" class="nav-ext-link" data-i18n="nav.mail">邮件</a>
+      <div class="lang-switch">
+        <button class="active" data-lang="en">EN</button>
+        <button data-lang="cn">中</button>
+      </div>
+      <div class="color-switch">
+        <button class="active" data-color="neon" style="--c:#00ff88" aria-label="Neon green"></button>
+        <button data-color="logo" style="--c:#177a4c" aria-label="Logo green"></button>
+      </div>
+    </div>
+  </div>
   <div class="mobile-nav-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
 
   <main>
@@ -2149,7 +2172,7 @@
 
     // ===== MOBILE MENU =====
     function toggleMobileMenu() {
-      const isOpen = document.querySelector('.nav-links').classList.toggle('open');
+      const isOpen = document.getElementById('mobile-sidebar').classList.toggle('open');
       document.getElementById('mobile-overlay').classList.toggle('open');
       const btn = document.querySelector('.mobile-menu-btn');
       btn.setAttribute('aria-expanded', isOpen);
@@ -2158,7 +2181,7 @@
       }
     }
     function closeMobileMenu() {
-      document.querySelector('.nav-links').classList.remove('open');
+      document.getElementById('mobile-sidebar').classList.remove('open');
       document.getElementById('mobile-overlay').classList.remove('open');
       if (!document.getElementById('lightbox').classList.contains('active')) {
         document.body.style.overflow = '';
