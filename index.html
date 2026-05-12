@@ -914,10 +914,13 @@
     .contact-brand-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       margin-top: var(--space-lg);
       padding-top: var(--space-lg);
       border-top: 1px solid var(--border);
+    }
+    .contact-brand-left {
+      flex: 1;
     }
     .contact-social-row {
       display: flex;
@@ -1171,6 +1174,7 @@
       section { padding: var(--space-lg) var(--space-md); }
       .section-header { margin-bottom: var(--space-md); }
       .simple-footer { flex-direction: column; gap: var(--space-xs); text-align: center; }
+      .contact-brand-row { flex-direction: column; gap: var(--space-md); }
     }
   </style>
 </head>
@@ -1497,9 +1501,12 @@
           <iframe class="contact-map" src="https://www.openstreetmap.org/export/embed.html?bbox=100%2C1%2C125%2C45&amp;layer=mapnik" loading="lazy"></iframe>
         </div>
         <div class="contact-brand-row">
-          <div class="footer-brand">
-            <img src="assets/logo-bd.webp" alt="BDAE">
-            <span>BDAE <span style="color:var(--text-secondary);font-weight:400;">Consulting</span></span>
+          <div class="contact-brand-left">
+            <div class="footer-brand">
+              <img src="assets/logo-bd.webp" alt="BDAE">
+              <span>BDAE <span style="color:var(--text-secondary);font-weight:400;">Consulting</span></span>
+            </div>
+            <p class="footer-desc" data-i18n="footer.desc">BDAE Consulting delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.</p>
           </div>
           <div class="contact-social-row">
             <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
