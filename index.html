@@ -5,7 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="meta.title">BDAE — BD Advanced Engineering</title>
   <meta name="description" data-i18n-attr="content" data-i18n="meta.desc" content="BD Advanced Engineering delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.">
+  <link rel="canonical" href="https://www.bd-ae.com/">
+  <meta property="og:title" content="BDAE Consulting — Engineering Trust, Building Futures">
+  <meta property="og:description" content="BDAE Consulting delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.">
+  <meta property="og:url" content="https://www.bd-ae.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.bd-ae.com/assets/logo-bd.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BDAE Consulting — Engineering Trust, Building Futures">
+  <meta name="twitter:description" content="BDAE Consulting delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.">
+  <meta name="twitter:image" content="https://www.bd-ae.com/assets/logo-bd.webp">
   <link rel="icon" type="image/png" href="assets/logo-bd.webp">
+  <link rel="preload" as="image" href="assets/project-bmw-hvb.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -1331,13 +1342,13 @@
         </div>
       </div>
       <div class="hero-downloads reveal reveal-delay-4">
-        <a href="/downloads/EN_CN_BDAE_Consulting_Presentation_2026.pdf" target="_blank">
+        <a href="/downloads/EN_CN_BDAE_Consulting_Presentation_2026.pdf" target="_blank" rel="noopener">
           <span data-i18n="hero.catalog">Download Catalog</span>
         </a>
-        <a href="/downloads/BDAE_LEED_Introduction.pdf" target="_blank">
+        <a href="/downloads/BDAE_LEED_Introduction.pdf" target="_blank" rel="noopener">
           <span data-i18n="hero.leed">LEED Introduction</span>
         </a>
-        <a href="/downloads/倍蒂咨询_低碳零碳园区介绍_CN.pdf" target="_blank">
+        <a href="/downloads/倍蒂咨询_低碳零碳园区介绍_CN.pdf" target="_blank" rel="noopener">
           <span data-i18n="hero.carbon">Carbon Neutral Park</span>
         </a>
       </div>
@@ -1611,7 +1622,7 @@
       <span>&copy; BDAE Consulting 2026 | <span data-i18n="footer.rights">All rights reserved</span></span>
     </div>
     <div class="footer-right">
-      <a href="http://www.beian.miit.gov.cn" target="_blank">沪ICP备19043151号-1</a>
+      <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener">沪ICP备19043151号-1</a>
     </div>
   </footer>
   <!-- LIGHTBOX -->
@@ -2126,14 +2137,18 @@
 
     // ===== MOBILE MENU =====
     function toggleMobileMenu() {
-      document.querySelector('.nav-links').classList.toggle('open');
+      const isOpen = document.querySelector('.nav-links').classList.toggle('open');
       document.getElementById('mobile-overlay').classList.toggle('open');
-      document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+      if (!document.getElementById('lightbox').classList.contains('active')) {
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
     }
     function closeMobileMenu() {
       document.querySelector('.nav-links').classList.remove('open');
       document.getElementById('mobile-overlay').classList.remove('open');
-      document.body.style.overflow = '';
+      if (!document.getElementById('lightbox').classList.contains('active')) {
+        document.body.style.overflow = '';
+      }
     }
 
     // ===== LEAFLET MAP =====
