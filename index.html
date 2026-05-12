@@ -13,14 +13,12 @@
     :root {
       --bg: #1a1a1a;
       --bg-elevated: #252525;
-      --surface: #2a2a2a;
       --text: #ffffff;
       --text-secondary: #b8b8b8;
       --text-dim: #777777;
       --accent: #00ff88;
       --accent-dim: rgba(0, 255, 136, 0.15);
       --border: #333333;
-      --border-light: #444444;
       --font-display: 'Oswald', sans-serif;
       --font-body: 'Crimson Text', serif;
       --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
@@ -33,6 +31,11 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    *:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -339,10 +342,6 @@
       color: var(--accent);
       line-height: 1;
     }
-    .hero-stat:hover .num {
-      color: var(--text);
-      transition: color 0.3s;
-    }
     .hero-stat .label {
       margin-top: var(--space-xs);
       display: block;
@@ -434,6 +433,9 @@
     .about-lead strong {
       color: var(--text);
       font-weight: 600;
+    }
+    .about-paragraph {
+      margin-top: var(--space-sm);
     }
     .about-values {
       display: flex;
@@ -556,7 +558,7 @@
     .service-list li:hover {
       color: var(--accent);
     }
-    .service-list li:first-child {
+    .service-list li.open:first-child {
       border-top: 2px solid var(--accent);
     }
     .service-list li .arrow {
@@ -565,7 +567,7 @@
     }
     .service-list li .pulse-dot {
       display: inline-block;
-      width: 8px; height: 8px;
+      width: 10px; height: 10px;
       border: 1.5px solid var(--accent);
       border-radius: 50%;
       flex-shrink: 0;
@@ -896,6 +898,9 @@
       background: var(--accent);
       color: var(--bg);
     }
+    .contact-sayhello {
+      margin-top: var(--space-md);
+    }
     .contact-map-wrap {
       margin-top: var(--space-lg);
       border: 1px solid var(--border);
@@ -1001,7 +1006,7 @@
     }
     .footer-social a {
       font-family: var(--font-mono);
-      font-size: 0.6rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--text-dim);
@@ -1055,22 +1060,61 @@
       .project-details { border-left: none; border-top: 1px solid var(--border); }
       .contact-layout { grid-template-columns: 1fr; }
       .contact-map { height: 200px; }
-      .nav-links { display: none; }
+      .nav-links {
+        position: fixed;
+        top: 0; right: 0; bottom: 0;
+        width: 280px;
+        flex-direction: column;
+        gap: 0;
+        background: var(--bg);
+        border-left: 1px solid var(--border);
+        padding: var(--space-xxl) var(--space-lg) var(--space-lg);
+        display: flex;
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        z-index: 200;
+      }
+      .nav-links.open {
+        transform: translateX(0);
+      }
+      .nav-links li {
+        margin-bottom: var(--space-sm);
+      }
+      .nav-links li:last-child {
+        margin-bottom: 0;
+      }
+      .mobile-nav-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.6);
+        z-index: 199;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s;
+      }
+      .mobile-nav-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
       .mobile-menu-btn { display: flex; }
       section { padding: var(--space-xl) var(--space-md); }
+      .section-header { margin-bottom: var(--space-lg); }
+      .service-card { padding: var(--space-lg) var(--space-md); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 600px) {
       .stats-grid { grid-template-columns: 1fr; }
       .partners-grid { grid-template-columns: 1fr; }
-      .partner-cell { border-right: none !important; }
+      .partner-cell { border-right: none; }
       .hero-stats-row { grid-template-columns: 1fr 1fr; }
       footer { text-align: center; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-desc { max-width: 100%; }
       .nav-logo img { height: 28px; }
       .nav-cta { display: none; }
+      section { padding: var(--space-lg) var(--space-md); }
+      .section-header { margin-bottom: var(--space-md); }
     }
   </style>
 </head>
@@ -1101,6 +1145,7 @@
       <span></span><span></span><span></span>
     </button>
   </nav>
+  <div class="mobile-nav-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -1163,10 +1208,10 @@
         <p data-i18n="about.lead1">
           BDAE Consulting is a building consulting firm dedicated to working together with our clients in due diligence, EPCM service, and carbon neutral services. We value creative solutions to provide critical insights and practical solutions.
         </p>
-        <p style="margin-top: var(--space-sm);" data-i18n="about.lead2">
+        <p class="about-paragraph" data-i18n="about.lead2">
           With a growing team of diverse, experienced and values-driven specialists, our listen-first philosophy provides companies of every size and industry with effective solutions that align with their culture and objectives.
         </p>
-        <p style="margin-top: var(--space-sm);" data-i18n="about.lead3">
+        <p class="about-paragraph" data-i18n="about.lead3">
           Headquartered in Shanghai, with offices in Shenyang and Singapore, our projects span across China, Thailand, Japan, and Southeast Asia.
         </p>
       </div>
@@ -1369,7 +1414,7 @@
         </div>
       </div>
       <div class="contact-info">
-        <h3 style="margin-top:var(--space-md);" data-i18n="contact.sayHello">Say Hello</h3>
+        <h3 class="contact-sayhello" data-i18n="contact.sayHello">Say Hello</h3>
         <p class="footer-contact-item" data-i18n="contact.ctaDesc">Have a project in mind? We'd love to hear from you.</p>
         <a href="mailto:z.pan@bd-ae.com" class="contact-cta" data-i18n="contact.ctaBtn">Send an Email</a>
         <div class="contact-map-wrap">
@@ -1520,17 +1565,6 @@
         'contact.phoneLabel': 'Telephone',
         'contact.emailLabel': 'Email',
         'contact.emailLink': 'Email',
-        'form.name': 'Name *',
-        'form.namePlaceholder': 'Your name',
-        'form.email': 'Email *',
-        'form.emailPlaceholder': 'your@email.com',
-        'form.company': 'Company *',
-        'form.companyPlaceholder': 'Company name',
-        'form.message': 'Message *',
-        'form.messagePlaceholder': 'Tell us about your project...',
-        'form.submit': 'Send Message',
-        'form.success': 'Thank you! Your message has been sent.',
-        'form.error': 'Please fill in all required fields.',
         'footer.rights': 'All rights reserved',
         'footer.desc': 'BDAE Consulting delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.',
         'footer.navTitle': 'Quick Links',
@@ -1637,17 +1671,6 @@
         'contact.phoneLabel': '电话',
         'contact.emailLabel': '邮箱',
         'contact.emailLink': '发送邮件',
-        'form.name': '姓名 *',
-        'form.namePlaceholder': '您的姓名',
-        'form.email': '邮箱 *',
-        'form.emailPlaceholder': 'your@email.com',
-        'form.company': '公司 *',
-        'form.companyPlaceholder': '公司名称',
-        'form.message': '留言 *',
-        'form.messagePlaceholder': '请描述您的项目需求...',
-        'form.submit': '发送信息',
-        'form.success': '感谢您！我们已收到您的信息。',
-        'form.error': '请填写所有必填字段。',
         'footer.rights': '版权所有',
         'footer.desc': '倍蒂咨询专注于尽职调查、EPCM服务与碳中和咨询，为客户提供可靠、可落地的工程咨询解决方案。',
         'footer.navTitle': '快捷导航',
@@ -1836,6 +1859,22 @@
     renderProject(0);
     startProjectsTimer();
 
+    // ===== CAROUSEL TOUCH SUPPORT =====
+    (function() {
+      const el = document.getElementById('project-carousel');
+      let startX = 0, endX = 0;
+      el.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
+      el.addEventListener('touchend', e => {
+        endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        if (Math.abs(diff) > 50) {
+          clearProjectsTimer();
+          diff > 0 ? nextProject() : prevProject();
+          startProjectsTimer();
+        }
+      }, {passive: true});
+    })();
+
     // language switch: refresh project carousel
     document.querySelectorAll('.lang-switch button').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -1915,19 +1954,14 @@
 
     // ===== MOBILE MENU =====
     function toggleMobileMenu() {
-      const links = document.querySelector('.nav-links');
-      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-      if (links.style.display === 'flex') {
-        links.style.position = 'absolute';
-        links.style.top = '100%';
-        links.style.left = '0';
-        links.style.right = '0';
-        links.style.flexDirection = 'column';
-        links.style.background = 'rgba(26,26,26,0.98)';
-        links.style.padding = 'var(--space-md)';
-        links.style.borderBottom = '1px solid var(--border)';
-        links.style.backdropFilter = 'blur(8px)';
-      }
+      document.querySelector('.nav-links').classList.toggle('open');
+      document.getElementById('mobile-overlay').classList.toggle('open');
+      document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+    }
+    function closeMobileMenu() {
+      document.querySelector('.nav-links').classList.remove('open');
+      document.getElementById('mobile-overlay').classList.remove('open');
+      document.body.style.overflow = '';
     }
   </script>
 </body>
