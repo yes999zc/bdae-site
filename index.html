@@ -205,22 +205,24 @@
     .lang-switch button:hover:not(.active) {
       color: var(--text);
     }
-    .nav-cta {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 0.6rem 1.2rem;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      background: transparent;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
+    .color-switch {
+      display: flex;
+      gap: 2px;
+      border: 1px solid var(--border);
     }
-    .nav-cta:hover {
-      background: var(--accent);
-      color: var(--bg);
+    .color-switch button {
+      width: 20px;
+      height: 20px;
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .color-switch button:not(.active) {
+      opacity: 0.4;
+    }
+    .color-switch button:hover:not(.active) {
+      opacity: 0.7;
     }
     .nav-ext-link {
       font-family: var(--font-mono);
@@ -1178,7 +1180,6 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-desc { max-width: 100%; }
       .nav-logo img { height: 28px; }
-      .nav-cta { display: none; }
       section { padding: var(--space-lg) var(--space-md); }
       .section-header { margin-bottom: var(--space-md); }
       .simple-footer { grid-template-columns: 1fr; gap: var(--space-sm); text-align: center; }
@@ -1209,7 +1210,10 @@
         <button class="active" data-lang="en">EN</button>
         <button data-lang="cn">中</button>
       </div>
-      <a href="#contact" class="nav-cta" data-i18n="nav.cta">Get in touch</a>
+      <div class="color-switch">
+        <button class="active" data-color="neon" style="background:#00ff88"></button>
+        <button data-color="logo" style="background:#177a4c"></button>
+      </div>
     </div>
     <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
@@ -1786,6 +1790,30 @@
     };
 
     let currentLang = localStorage.getItem('bdae-lang') || 'cn';
+
+    // ===== COLOR SWITCH =====
+    function switchColor(color) {
+      const root = document.documentElement;
+      const neon = { accent: '#00ff88', accentDim: 'rgba(0,255,136,0.15)', logoFilter: 'brightness(0) invert(1)' };
+      const logo = { accent: '#177a4c', accentDim: 'rgba(23,122,76,0.15)', logoFilter: 'none' };
+      const c = color === 'logo' ? logo : neon;
+      root.style.setProperty('--accent', c.accent);
+      root.style.setProperty('--accent-dim', c.accentDim);
+      document.querySelectorAll('.nav-logo img, .footer-brand img').forEach(img => img.style.filter = c.logoFilter);
+      localStorage.setItem('bdae-color', color);
+    }
+    document.querySelectorAll('.color-switch button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.color-switch button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        switchColor(btn.dataset.color);
+      });
+    });
+    (function initColor() {
+      const saved = localStorage.getItem('bdae-color') || 'neon';
+      document.querySelector(`.color-switch button[data-color="${saved}"]`).classList.add('active');
+      switchColor(saved);
+    })();
 
     function applyLang(lang) {
       currentLang = lang;
