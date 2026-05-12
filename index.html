@@ -911,11 +911,17 @@
     .contact-sayhello {
       margin-top: var(--space-md);
     }
+    .contact-brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: var(--space-lg);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border);
+    }
     .contact-social-row {
       display: flex;
-      justify-content: flex-end;
       gap: var(--space-sm);
-      margin-top: var(--space-lg);
     }
     .contact-social-row a {
       font-family: var(--font-mono);
@@ -1490,10 +1496,16 @@
         <div class="contact-map-wrap">
           <iframe class="contact-map" src="https://www.openstreetmap.org/export/embed.html?bbox=100%2C1%2C125%2C45&amp;layer=mapnik" loading="lazy"></iframe>
         </div>
-        <div class="contact-social-row">
-          <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
-          <a href="#" target="_blank" rel="noopener" data-i18n="footer.wechat">WeChat</a>
-          <a href="#" target="_blank" rel="noopener" data-i18n="footer.youtube">YouTube</a>
+        <div class="contact-brand-row">
+          <div class="footer-brand">
+            <img src="assets/logo-bd.webp" alt="BDAE">
+            <span>BDAE <span style="color:var(--text-secondary);font-weight:400;">Consulting</span></span>
+          </div>
+          <div class="contact-social-row">
+            <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
+            <a href="#" target="_blank" rel="noopener" data-i18n="footer.wechat">WeChat</a>
+            <a href="#" target="_blank" rel="noopener" data-i18n="footer.youtube">YouTube</a>
+          </div>
         </div>
       </div>
     </div>
