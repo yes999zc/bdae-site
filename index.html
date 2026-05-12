@@ -712,7 +712,7 @@
       letter-spacing: 0.15em;
       padding: 0.4rem 0.8rem;
       background: var(--accent);
-      color: #ffffff;
+      color: var(--bg);
     }
     .project-details {
       padding: var(--space-xl);
@@ -1800,6 +1800,7 @@
       root.style.setProperty('--accent', c.accent);
       root.style.setProperty('--accent-dim', c.accentDim);
       document.querySelectorAll('.nav-logo img, .footer-brand img').forEach(img => img.style.filter = c.logoFilter);
+      document.querySelectorAll('.project-tag').forEach(el => el.style.color = color === 'logo' ? '#ffffff' : '');
       localStorage.setItem('bdae-color', color);
     }
     document.querySelectorAll('.color-switch button').forEach(btn => {
