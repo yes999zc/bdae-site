@@ -193,7 +193,7 @@
       gap: 2px;
       border: 1px solid var(--border);
     }
-    .lang-switch button, .lang-switch-mobile button {
+    .lang-switch button {
       font-family: var(--font-mono);
       font-size: 0.65rem;
       text-transform: uppercase;
@@ -205,11 +205,11 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    .lang-switch button.active, .lang-switch-mobile button.active {
+    .lang-switch button.active {
       background: var(--accent);
       color: var(--bg);
     }
-    .lang-switch button:hover:not(.active), .lang-switch-mobile button:hover:not(.active) {
+    .lang-switch button:hover:not(.active) {
       color: var(--text);
     }
     .color-switch {
@@ -1173,16 +1173,7 @@
         pointer-events: auto;
       }
       .mobile-menu-btn { display: flex; }
-      .color-switch { display: none; }
-      .lang-switch { display: none; }
-      .nav-ext-link { display: none; }
-      .lang-switch-mobile { display: flex; gap: 8px; margin-top: var(--space-sm); }
-      .lang-switch-mobile button { background: none; border: 1px solid var(--border); color: var(--text-dim); padding: 0.5rem 0.8rem; cursor: pointer; font-size: 0.85rem; }
-      .lang-switch-mobile button.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-      .nav-links { display: none; }
-      .nav-links.open { display: flex; }
-      nav { padding: 8px var(--space-md); justify-content: flex-start; }
-      .nav-right { gap: 2px; margin-left: auto; }
+      nav { padding: var(--space-xs) var(--space-sm); }
       section { padding: var(--space-xl) var(--space-md); }
       .section-header { margin-bottom: var(--space-lg); }
       .service-card { padding: var(--space-lg) var(--space-md); }
@@ -1199,11 +1190,10 @@
       .hero-stats-row { grid-template-columns: 1fr 1fr; }
       footer { text-align: center; }
       .footer-desc { max-width: 100%; }
-      nav { padding: 8px var(--space-md); }
-      .nav-right { gap: 2px; }
+      nav { padding: var(--space-xs) var(--space-sm); }
       .nav-logo img { height: 28px; }
+      .nav-right { gap: var(--space-xs); }
       .nav-ext-link { display: none; }
-      .color-switch { display: none; }
       .section-header { margin-bottom: var(--space-md); }
       .simple-footer { grid-template-columns: 1fr; gap: var(--space-md); text-align: center; place-items: center; }
       .footer-left, .footer-right { text-align: center; }
@@ -1214,7 +1204,7 @@
       .footer-social-row { flex-wrap: wrap; justify-content: center; }
       /* mobile font bump */
       body { font-size: 14px; }
-      .lang-switch button, .lang-switch-mobile button { font-size: 0.75rem; padding: 0.5rem 0.7rem; }
+      .lang-switch button { font-size: 0.75rem; padding: 0.5rem 0.7rem; }
       .color-switch button { width: 32px; height: 32px; }
       .scroll-indicator { font-size: 0.75rem; }
       .project-tag { font-size: 0.75rem; }
@@ -1239,10 +1229,6 @@
       <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
       <li><a href="#certifications" data-i18n="nav.certs">Certifications</a></li>
       <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-      <li class="lang-switch-mobile">
-        <button class="active" data-lang="en">EN</button>
-        <button data-lang="cn">中</button>
-      </li>
     </ul>
     <div class="nav-right">
       <a href="https://v.bd-ae.com" target="_blank" rel="noopener" class="nav-ext-link" data-i18n="nav.vr">VR平台</a>
@@ -1863,7 +1849,7 @@
       localStorage.setItem('bdae-lang', lang);
       document.documentElement.lang = lang === 'cn' ? 'zh-CN' : 'en';
 
-      document.querySelectorAll('.lang-switch button, .lang-switch-mobile button').forEach(btn => {
+      document.querySelectorAll('.lang-switch button').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
 
@@ -1895,7 +1881,7 @@
       refreshOpenDrawers();
     }
 
-    document.querySelectorAll('.lang-switch button, .lang-switch-mobile button').forEach(btn => {
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
       btn.addEventListener('click', () => applyLang(btn.dataset.lang));
     });
 
@@ -2041,7 +2027,7 @@
     })();
 
     // language switch: refresh project carousel
-    document.querySelectorAll('.lang-switch button, .lang-switch-mobile button').forEach(btn => {
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
       btn.addEventListener('click', () => {
         projects = projectData[currentLang === 'cn' ? 'cn' : 'en'];
         renderProject(currentProject);
