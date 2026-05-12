@@ -1116,7 +1116,7 @@
       .hero-right { padding-left: 0; }
       .about-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .services-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
       .service-card { border-right: none; border-bottom: 1px solid var(--border); }
       .partners-grid { grid-template-columns: repeat(2, 1fr); }
       .partner-cell:nth-child(4n) { border-right: 1px solid var(--border); }
@@ -1169,6 +1169,7 @@
     }
 
     @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: 1fr; }
       .partners-grid { grid-template-columns: 1fr; }
       .partner-cell { border-right: none; }
@@ -1215,6 +1216,8 @@
     </button>
   </nav>
   <div class="mobile-nav-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
+
+  <main>
 
   <!-- HERO -->
   <section class="hero" id="hero">
@@ -1516,6 +1519,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <footer class="simple-footer">
     <div class="footer-left">
