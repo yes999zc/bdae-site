@@ -1813,6 +1813,7 @@
     });
     (function initColor() {
       const saved = localStorage.getItem('bdae-color') || 'neon';
+      document.querySelectorAll('.color-switch button').forEach(b => b.classList.remove('active'));
       document.querySelector(`.color-switch button[data-color="${saved}"]`).classList.add('active');
       switchColor(saved);
     })();
