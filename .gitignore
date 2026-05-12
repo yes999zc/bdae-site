@@ -1,0 +1,5 @@
+.DS_Store
+dogfood-output/
+screenshot-*.jpg
+screenshot-*.png
+*.png
