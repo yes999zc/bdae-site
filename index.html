@@ -1754,7 +1754,7 @@
         'footer.vr': 'VR',
         'footer.mail': '企业邮箱',
         'contact.shanghaiAddr': '上海市闵行区沪闵路7866弄\n莲花国际广场7号楼506室',
-        'contact.shenyangAddr': '辽宁省沈阳市铁西经济技术开发区浑河二十街中德装备园北一门二楼',
+        'contact.shenyangAddr': '辽宁省沈阳市铁西经济技术开发区\n浑河二十街中德装备园北一门二楼',
         'contact.singaporeAddr': '57 Boat Quay\nSingapore (049846)',
         'contact.shanghaiLabel': '上海办公室',
         'contact.shenyangLabel': '沈阳办公室',
@@ -1794,7 +1794,7 @@
           }
         } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
           // skip
-        } else if (el.querySelector('br')) {
+        } else if (el.querySelector('br') || translation.includes('\n')) {
           el.innerHTML = translation.replace(/\n/g, '<br>');
         } else {
           el.textContent = translation;
