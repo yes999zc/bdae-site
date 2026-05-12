@@ -911,6 +911,28 @@
     .contact-sayhello {
       margin-top: var(--space-md);
     }
+    .contact-footer-brand {
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border);
+    }
+    .contact-footer-bottom {
+      margin-top: var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+    }
+    .contact-footer-bottom a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-footer-bottom a:hover {
+      color: var(--accent);
+    }
     .contact-map-wrap {
       margin-top: var(--space-lg);
       border: 1px solid var(--border);
@@ -1450,50 +1472,27 @@
         <div class="contact-map-wrap">
           <iframe class="contact-map" src="https://www.openstreetmap.org/export/embed.html?bbox=100%2C1%2C125%2C45&amp;layer=mapnik" loading="lazy"></iframe>
         </div>
+        <div class="contact-footer-brand">
+          <div class="footer-brand">
+            <img src="assets/logo-bd.webp" alt="BDAE">
+            <span>BDAE <span style="color:var(--text-secondary);font-weight:400;">Consulting</span></span>
+          </div>
+          <p class="footer-desc" data-i18n="footer.desc">BDAE Consulting delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.</p>
+          <div class="footer-social">
+            <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
+            <a href="#" target="_blank" rel="noopener" data-i18n="footer.wechat">WeChat</a>
+            <a href="#" target="_blank" rel="noopener" data-i18n="footer.youtube">YouTube</a>
+          </div>
+          <div class="contact-footer-bottom">
+            <span>&copy; BDAE Consulting 2020 | <span data-i18n="footer.rights">All rights reserved</span></span>
+            <a href="http://www.beian.miit.gov.cn" target="_blank">沪ICP备19043151号-1</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-brand">
-          <img src="assets/logo-bd.webp" alt="BDAE">
-          <span>BDAE <span style="color:var(--text-secondary);font-weight:400;">Consulting</span></span>
-        </div>
-        <p class="footer-desc" data-i18n="footer.desc">BDAE Consulting delivers practical, high-quality consulting solutions in due diligence, EPCM services, and carbon neutral initiatives.</p>
-        <div class="footer-social">
-          <a href="#" target="_blank" rel="noopener" data-i18n="footer.linkedin">LinkedIn</a>
-          <a href="#" target="_blank" rel="noopener" data-i18n="footer.wechat">WeChat</a>
-          <a href="#" target="_blank" rel="noopener" data-i18n="footer.youtube">YouTube</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer.navTitle">Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="#about" data-i18n="nav.about">About</a></li>
-          <li><a href="#services" data-i18n="nav.services">Services</a></li>
-          <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
-          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-          <li><a href="#certifications" data-i18n="nav.certs">Certifications</a></li>
-          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer.platformTitle">Platforms</h4>
-        <ul class="footer-links">
-          <li><a href="https://v.bd-ae.com" target="_blank" rel="noopener" data-i18n="footer.vr">VR Platform</a></li>
-          <li><a href="https://mail.bd-ae.com" target="_blank" rel="noopener" data-i18n="footer.mail">Webmail</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; BDAE Consulting 2020 | <span data-i18n="footer.rights">All rights reserved</span></span>
-      <a href="http://www.beian.miit.gov.cn" target="_blank">沪ICP备19043151号-1</a>
-    </div>
-  </footer>
-
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
     <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
