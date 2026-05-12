@@ -42,6 +42,17 @@
       --space-xxl: 10rem;
     }
 
+    [data-theme="light"] {
+      --bg: #f5f5f5;
+      --bg-elevated: #ffffff;
+      --text: #1a1a1a;
+      --text-secondary: #555555;
+      --text-dim: #888888;
+      --accent: #177a4c;
+      --accent-dim: rgba(23, 122, 76, 0.12);
+      --border: #dddddd;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     *:focus-visible {
@@ -205,22 +216,19 @@
     .lang-switch button:hover:not(.active) {
       color: var(--text);
     }
-    .nav-cta {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 0.6rem 1.2rem;
-      border: 1px solid var(--accent);
-      color: var(--accent);
+.theme-toggle {
+      font-size: 1.1rem;
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
       background: transparent;
+      border-radius: 4px;
       cursor: pointer;
       transition: all 0.2s;
-      text-decoration: none;
     }
-    .nav-cta:hover {
-      background: var(--accent);
-      color: var(--bg);
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--text);
     }
     .nav-ext-link {
       font-family: var(--font-mono);
@@ -1178,7 +1186,6 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-desc { max-width: 100%; }
       .nav-logo img { height: 28px; }
-      .nav-cta { display: none; }
       section { padding: var(--space-lg) var(--space-md); }
       .section-header { margin-bottom: var(--space-md); }
       .simple-footer { grid-template-columns: 1fr; gap: var(--space-sm); text-align: center; }
@@ -1209,7 +1216,7 @@
         <button class="active" data-lang="en">EN</button>
         <button data-lang="cn">中</button>
       </div>
-      <a href="#contact" class="nav-cta" data-i18n="nav.cta">Get in touch</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
     </div>
     <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
@@ -1786,6 +1793,20 @@
     };
 
     let currentLang = localStorage.getItem('bdae-lang') || 'cn';
+
+    // ===== THEME TOGGLE =====
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isLight = html.dataset.theme === 'light';
+      html.dataset.theme = isLight ? 'dark' : 'light';
+      localStorage.setItem('bdae-theme', html.dataset.theme);
+      document.querySelector('.theme-toggle').textContent = isLight ? '☀️' : '🌙';
+    }
+    (function initTheme() {
+      const saved = localStorage.getItem('bdae-theme') || 'dark';
+      document.documentElement.dataset.theme = saved;
+      document.querySelector('.theme-toggle').textContent = saved === 'light' ? '🌙' : '☀️';
+    })();
 
     function applyLang(lang) {
       currentLang = lang;
