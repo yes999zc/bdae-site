@@ -932,9 +932,10 @@
       font-size: 0.85rem;
       color: var(--text-secondary);
       line-height: 1.6;
+      margin-top: var(--space-sm);
+      margin-bottom: var(--space-sm);
     }
     .contact-info:last-child .contact-map-wrap {
-      flex: 1;
       display: flex;
     }
     .contact-social-row {
@@ -976,12 +977,10 @@
     }
     .contact-map {
       width: 100%;
-      height: 100%;
-      min-height: 280px;
+      aspect-ratio: 3 / 4;
       border: none;
       display: block;
       border-radius: 4px;
-      z-index: 1;
     }
     .contact-map-wrap {
       margin-top: var(--space-lg);
@@ -1199,7 +1198,6 @@
       .section-header { margin-bottom: var(--space-md); }
       .simple-footer { flex-direction: column; gap: var(--space-xs); text-align: center; }
       .contact-info { display: block; }
-      .contact-info:last-child .contact-map-wrap { min-height: 200px; }
     }
   </style>
 </head>
@@ -1534,6 +1532,7 @@
         </div>
       </div>
       <div class="contact-info">
+        <h3 data-i18n="contact.mapTitle">Global Office</h3>
         <div class="contact-map-wrap">
           <div id="contact-map" class="contact-map"></div>
         </div>
@@ -1660,6 +1659,7 @@
         'footer.vr': 'VR',
         'footer.mail': 'Webmail',
         'contact.emailLink': 'Email',
+        'contact.mapTitle': 'Global Office',
         'contact.shanghaiAddr': 'Tower 7-506, Lotus International Plaza\nLane 7866, Humin Road\nShanghai, P.R.C',
         'contact.shenyangAddr': '2nd Floor, North Gate 1, Sino-German Equipment Park,\n20th Hunhe Street, Tiexi Economic & Dev. Zone,\nShenyang, Liaoning, P.R.C',
         'contact.singaporeAddr': '57 Boat Quay\nSingapore (049846)',
@@ -1776,13 +1776,14 @@
         'footer.youtube': '油管',
         'footer.vr': 'VR',
         'footer.mail': '企业邮箱',
+        'contact.mapTitle': '全球办公室',
         'contact.shanghaiAddr': '上海市闵行区沪闵路7866弄\n莲花国际广场7号楼506室',
         'contact.shenyangAddr': '辽宁省沈阳市铁西经济技术开发区\n浑河二十街中德装备园北一门二楼',
         'contact.singaporeAddr': '57 Boat Quay\nSingapore (049846)',
         'contact.shanghaiLabel': '上海办公室',
         'contact.shenyangLabel': '沈阳办公室',
         'contact.singaporeLabel': '新加坡办公室',
-        'contact.sayHello': '联系我们',
+        'contact.sayHello': '点我询问',
         'contact.ctaDesc': '有项目合作意向？我们期待与您沟通。',
         'contact.ctaBtn': '发送邮件'
       }
