@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preload" as="image" href="assets/project-06.webp">
   <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="assets/vendor/leaflet.css" />
   <style>
     :root {
       --bg: #1a1a1a;
@@ -2218,16 +2218,20 @@
     // ===== LEAFLET MAP =====
     document.addEventListener('DOMContentLoaded', function() {
       const script = document.createElement('script');
-      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      script.src = 'assets/vendor/leaflet.js';
       script.onload = function() {
         const map = L.map('contact-map', {
           center: [28, 112],
           zoom: 4,
-          zoomControl: false,
-          attributionControl: false
+          zoomControl: false
         });
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-          maxZoom: 18
+        // Esri World Dark Gray Canvas. CARTO basemaps (dark_all) now answer with an
+        // "API KEY REQUIRED" watermark tile when no key is supplied, which left this map
+        // a blank black box. Esri's canvas basemap needs no key and matches the dark theme.
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+          minZoom: 2,
+          maxZoom: 16,
+          attribution: '© Esri, OpenStreetMap contributors'
         }).addTo(map);
 
         const markers = [
